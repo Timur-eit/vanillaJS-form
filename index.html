@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form name="newForm" onsubmit="onFormSubmit(); return false;">
+        <input type="text" name="newInput">
+        <input type="submit" value="Отправить">
+    </form>
+    <script>
+        function onFormSubmit() {
+            const form = document.forms.newForm;
+            const { value } = form.elements.newInput;
+            const regExp = /[a-z]/;
+
+            if (value.length && value.split('').every((char) => regExp.test(char))) {
+                alert('Форма отправлена успешно');
+                form.elements.newInput.value = '';
+            } else {
+                alert('Только латинские в нижнем регистре');
+            }
+        }
+    </script>
+</body>
+
+</html>
